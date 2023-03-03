@@ -4,6 +4,7 @@ import { Hero } from '../hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
+import { httpClientInMemBackendServiceFactory } from 'angular-in-memory-web-api';
 
 @Component({
   selector: 'app-hero-detail',
@@ -28,5 +29,8 @@ export class HeroDetailComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+  save() {
+    this.heroService.updateHero(this.hero!).subscribe(() => this.goBack());
   }
 }
